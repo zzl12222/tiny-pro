@@ -1,0 +1,26 @@
+package com.TinyPro.entity.po;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
+
+@Entity
+@Table(name = "lang")
+@Data
+public class Lang implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String name;
+
+    @OneToMany(mappedBy = "lang", fetch = FetchType.LAZY)
+    private List<I18> i18ns;
+}
