@@ -159,7 +159,7 @@ public class II18ServiceImpl implements II18Service {
                 i18Repository.save(i18);
                 I18Vo result = new I18Vo(i18.getId(), i18.getKey(), i18.getContent(), new LangVo(lang.getId(), lang.getName()));
                 return new ResponseEntity<>(result, HttpStatus.OK);
-            } catch (Exception e) {
+            } catch (Throwable e) {
                 throw new BusinessException("auth.passwordOrEmailError",HttpStatus.NOT_FOUND,null);
             }
         } else {
